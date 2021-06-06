@@ -1,5 +1,12 @@
+import NewSessionForm from "../components/sessions/NewSessionForm";
+
 function NewSessionPage() {
-  return <div>New Fitness Class Page</div>;
+  return (
+    <section>
+      <h1>Add New Class</h1>
+      <NewSessionForm />
+    </section>
+  );
 }
 
 export default NewSessionPage;

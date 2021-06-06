@@ -12,7 +12,7 @@ function MainNavigation() {
             <Link to="/">All Fitness Classes</Link>
           </li>
           <li>
-            <Link to="/new-meetup">Add New Class</Link>
+            <Link to="/new-session">Add New Class</Link>
           </li>
           <li>
             <Link to="/favorites">My Favorites</Link>
