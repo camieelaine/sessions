@@ -3,7 +3,7 @@ import { useRef } from "react";
 import Card from "../ui/Card";
 import classes from "./NewSessionForm.module.css";
 
-function NewSessionForm() {
+function NewSessionForm(props) {
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const addressInputRef = useRef();
@@ -23,7 +23,7 @@ function NewSessionForm() {
       address: enteredAddress,
       description: enteredDescription,
     };
-
+    props.onAddSession(sessionData);
     console.log(sessionData);
   }
 
