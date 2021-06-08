@@ -23,19 +23,19 @@ function NewSessionForm(props) {
       address: enteredAddress,
       description: enteredDescription,
     };
-    props.onAddSession(sessionData);
     console.log(sessionData);
+    props.onAddSession(sessionData);
   }
 
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
-          <label htmlFor="title">Meetup Title</label>
+          <label htmlFor="title">Class Title</label>
           <input type="text" required id="title" ref={titleInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor="image">Meetup Image</label>
+          <label htmlFor="image">Class Image</label>
           <input type="url" required id="image" ref={imageInputRef} />
         </div>
         <div className={classes.control}>

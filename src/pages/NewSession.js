@@ -1,24 +1,26 @@
-import NewSessionForm from "../components/sessions/NewSessionForm";
+import { useHistory } from "react-router-dom";
+
+import NewMeetupForm from "../components/sessions/NewSessionForm";
 
 function NewSessionPage() {
-  function addSessionHandler(sessionData) {
-    fetch(
-      "https://profile-59c6f-default-rtdb.firebaseio.com/fitness-classes.json",
+  const history = useHistory();
 
-      {
-        method: "POST",
-        body: JSON.stringify(sessionData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+  function addSessionHandler(sessionData) {
+    fetch("https://classes-472b6-default-rtdb.firebaseio.com/sessions.json", {
+      method: "POST",
+      body: JSON.stringify(sessionData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(() => {
+      history.replace("/");
+    });
   }
 
   return (
     <section>
       <h1>Add New Class</h1>
-      <NewSessionForm onAddSession={addSessionHandler} />
+      <NewMeetupForm onAddSession={addSessionHandler} />
     </section>
   );
 }
