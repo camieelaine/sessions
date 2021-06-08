@@ -1,31 +1,46 @@
+import { useState, useEffect } from "react";
+
 import SessionList from "../components/sessions/SessionList";
 
-const DUMMY_DATA = [
-  {
-    id: "m1",
-    title: "This is a first session",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg",
-    address: "Sessionstreet 5, 12345 Session City",
-    description:
-      "This is a first, amazing Session which you definitely should not miss. It will be a lot of fun!",
-  },
-  {
-    id: "m2",
-    title: "This is a second Session",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg",
-    address: "Sessionstreet 5, 12345 Session City",
-    description:
-      "This is a first, amazing Session which you definitely should not miss. It will be a lot of fun!",
-  },
-];
-
 function AllSessionsPage() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedSessions, setLoadedSessions] = useState([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetch("https://classes-472b6-default-rtdb.firebaseio.com/sessions.json")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const sessions = [];
+
+        for (const key in data) {
+          const session = {
+            id: key,
+            ...data[key],
+          };
+
+          sessions.push(session);
+        }
+
+        setIsLoading(false);
+        setLoadedSessions(sessions);
+      });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section>
+        <p>Loading...</p>
+      </section>
+    );
+  }
+
   return (
     <section>
-      <h1>All Sessions</h1>
-      <SessionList sessions={DUMMY_DATA} />
+      <h1>All Classes</h1>
+      <SessionList sessions={loadedSessions} />
     </section>
   );
 }
