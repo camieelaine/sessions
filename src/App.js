@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 
+import WelcomePage from "./pages/Welcome";
 import AllSessionsPage from "./pages/AllSessions";
 import NewSessionPage from "./pages/NewSession";
 import FavoritesPage from "./pages/Favorites";
@@ -10,6 +11,9 @@ function App() {
     <Layout>
       <Switch>
         <Route path="/" exact>
+          <WelcomePage />
+        </Route>
+        <Route path="/all-sessions">
           <AllSessionsPage />
         </Route>
         <Route path="/new-session">

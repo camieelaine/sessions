@@ -13,7 +13,10 @@ function MainNavigation() {
       <nav>
         <ul>
           <li>
-            <Link to="/">All Classes</Link>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/all-sessions">All Classes</Link>
           </li>
           <li>
             <Link to="/new-session">Add New Class</Link>
